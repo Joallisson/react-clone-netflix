@@ -34,7 +34,7 @@ export default () => { //Função principal //Nesse caso ela é uma função an�
     <div className='page'>
 
       {
-        featureData && <FeatureMovie item={featureData}/>
+        featureData && <FeatureMovie item={featureData}/> //Exbindo a capa do filme principal se ele existir
       }
 
       <section className='lists'>
