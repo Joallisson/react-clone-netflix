@@ -23,7 +23,8 @@ export default () => { //Função principal //Nesse caso ela é uma função an�
       let originals = list.filter(filmes => filmes.slug === 'originals'); //Pegando os filmes originais da netflix
       let randomChose = Math.floor(Math.random() * (originals[0].items.results.length - 1)); //Gerando número aleatório entre o numero de filmes da netflix e guardando na variável
       let chosen = originals[0].items.results[randomChose]; //Guardando o filme dentro da variável
-      console.log(chosen)
+      let chosenInfo = await tmdb_api.getMovieInfo(chosen.id, 'tv'); //Fazendo requisição das informações da capa da série da capa
+      console.log(chosenInfo)
     }
 
     

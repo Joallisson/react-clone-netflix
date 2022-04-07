@@ -51,5 +51,24 @@ export default {
                 items: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`)
             },
         ];
+    },
+
+    getMovieInfo: async (movieId, type) => {//Essa função busca informações mais completas da capa do filme principal da netflix
+        let info = {}; //Variável que vai guardar as informações do filme da capa
+
+        if (movieId) { //Se existir o movieId
+            switch (type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`); //Fazendo a requisição das informações do filme que vai estar na capa
+                    break;
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`); //Fazendo a requisição das informações da serie que vai estar na capa
+                    break
+                default:
+                    break;
+            }
+        }
+
+        return info;
     }
 }
