@@ -4,6 +4,7 @@ import './App.css';
 //Componentes
 import MovieRow from '../components/movieRow/MovieRow';
 import FeatureMovie from '../components/featureMovie/FeatureMovie';
+import Header from '../components/Header';
 
 //API
 import tmdb_api from '../services/tmdb_api';
@@ -12,6 +13,7 @@ export default () => { //Função principal //Nesse caso ela é uma função an�
 
   const [featureData, setFeatureData] = useState(null); //Filme em destaque no começo da tela
   const [movieList, setMovieList] = useState([]); //Guarda o estado de lista de todos os filmes retornados da api
+  const [blackHeader, setBlackHeader] = useState(false); //Guarda o estado da cor do header
 
   useEffect(() => {
     const loadAll = async () => { //Função que retorna as informaçẽs da api
@@ -32,8 +34,26 @@ export default () => { //Função principal //Nesse caso ela é uma função an�
     loadAll(); //Executando função para carregar informaçẽs da api
   }, [])
 
+  useEffect(() => {
+    const scrollListener = () => { //Criando função para setar o estado da cor do header
+      if(window.scrollY > 10){ //Se o scroll vertical tiver um pouco para baixo então o header fica preto, senão fica transparente
+        setBlackHeader(true);
+      }else{
+        setBlackHeader(false);
+      }
+    }
+
+    window.addEventListener('scroll', scrollListener);
+    return () => {
+      //window.removeEventListener('scroll', scrollListener);
+    }
+
+  }, []);
+
   return (
     <div className='page'>
+
+      <Header black={blackHeader}/>
 
       {
         featureData && <FeatureMovie item={featureData}/> //Exbindo a capa do filme principal se ele existir
