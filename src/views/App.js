@@ -43,9 +43,9 @@ export default () => { //Função principal //Nesse caso ela é uma função an�
       }
     }
 
-    window.addEventListener('scroll', scrollListener);
+    window.addEventListener('scroll', scrollListener); //Monitora o scroll para mudar o estado de preto para transparente
     return () => {
-      //window.removeEventListener('scroll', scrollListener);
+      window.removeEventListener('scroll', scrollListener); //Remove o o event listener
     }
 
   }, []);
@@ -67,6 +67,12 @@ export default () => { //Função principal //Nesse caso ela é uma função an�
         
         }
       </section>
+
+      <footer>
+        Feito com <span role="img" aria-label='coração'>&#128156;</span> por Joallisson<br/>
+        Direitos de imagem para Netflix <br/>
+        Dados pegos do site Themoviedb.org
+      </footer>
       
     </div>
   );
