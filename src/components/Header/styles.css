@@ -32,3 +32,22 @@ header.black{
 .header--user img{
     height: 100%;
 }
+
+@media(max-width: 760px){
+    header{
+        height: 60px;
+    }
+
+    header.black{
+        height: 60px;
+    }
+
+    .header--logo img{
+        margin-top: 10px;
+        height: 60%;
+    }
+
+    .header--user{
+        height: 40px;
+    }
+}
