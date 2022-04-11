@@ -62,5 +62,11 @@
 @media(max-width: 760px){
     .movieRow--right, .movieRow--left{
         opacity: 1;
+        height: 230px;
+    }
+
+    .movieRow--item{
+        display: inline-block;
+        width: 150px;
     }
 }
