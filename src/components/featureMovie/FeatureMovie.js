@@ -10,6 +10,11 @@ export default ({item}) => {
         genres.push(item.genres[i].name); //Jogando os gêneros dentro do array
     }
 
+    let description = item.overview; //Descrição da série em destaque
+    if (description.length > 300) { //Se a descrição passar de 300 caracteres
+        description = description.substring(0, 200) + '...'; //Então só exibe os primeiros 300 e concatena com os "..."
+    }
+
     return(
         <section className="featured" style={{
             backgroundSize: 'cover',
@@ -27,7 +32,7 @@ export default ({item}) => {
                         <div className="featured--seasons">{item.number_of_seasons} Temporada{item.number_of_seasons !== 1 ? 's' : ''}</div>
                     </div>
 
-                    <div className="featured--description">{item.overview}</div>
+                    <div className="featured--description">{description}</div>
 
                     <div className="featured--buttons">
                         <a className="featured--watchButton" href={`/watch/${item.id}`}> &#9658; Assistir</a>
